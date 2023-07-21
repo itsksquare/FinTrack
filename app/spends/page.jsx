@@ -65,29 +65,27 @@ const SpendsPage = () => {
             <div className="w-full flex flex-col my-5 p-2 bg-gray-300/10 rounded-lg">
               <h2 className="text-lg p-1 font-semibold">Latest Transactions</h2>
               <div className="w-full flex flex-col mt-3 p-1 overflow-y-scroll">
-                {session?.user.transactions
-                  .reverse()
-                  .map((transaction, index) => (
-                    <div
-                      key={index}
-                      className="w-full flex flex-row justify-between items-center py-2 px-4 bg-gray-300/20 rounded-lg mb-2"
-                    >
-                      <div className="flex flex-col">
-                        <p className="text-lg font-normal">
-                          <Link href={`/spends/${transaction._id}`}>
-                            {transaction.title}
-                          </Link>
-                        </p>
-                        <p className="text-xs text-gray-400">
-                          {new Date(transaction.date).toLocaleDateString()} |{" "}
-                          {new Date(transaction.date).toLocaleTimeString()}
-                        </p>
-                      </div>
-                      <h2 className="text-green-600 text-xl">
-                        {transaction.amount}
-                      </h2>
+                {session?.user.transactions.map((transaction, index) => (
+                  <div
+                    key={index}
+                    className="w-full flex flex-row justify-between items-center py-2 px-4 bg-gray-300/20 rounded-lg mb-2"
+                  >
+                    <div className="flex flex-col">
+                      <p className="text-lg font-normal">
+                        <Link href={`/spends/${transaction._id}`}>
+                          {transaction.title}
+                        </Link>
+                      </p>
+                      <p className="text-xs text-gray-400">
+                        {new Date(transaction.date).toLocaleDateString()} |{" "}
+                        {new Date(transaction.date).toLocaleTimeString()}
+                      </p>
                     </div>
-                  ))}
+                    <h2 className="text-green-600 text-xl">
+                      {transaction.amount}
+                    </h2>
+                  </div>
+                ))}
               </div>
             </div>
           </>

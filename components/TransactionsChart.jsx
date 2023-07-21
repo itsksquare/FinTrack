@@ -24,13 +24,10 @@ const TransactionsChart = ({ transactions }) => {
       const lineLables = [];
       const lineAmount = [];
 
-      transactions
-        .slice(0, 10)
-        .reverse()
-        .forEach((transaction) => {
-          lineLables.push(new Date(transaction.date).toLocaleDateString());
-          lineAmount.push(transaction.amount);
-        });
+      transactions.slice(0, 10).forEach((transaction) => {
+        lineLables.push(new Date(transaction.date).toLocaleDateString());
+        lineAmount.push(transaction.amount);
+      });
 
       setLineData({
         labels: lineLables,
