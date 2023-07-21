@@ -41,6 +41,12 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  referrals: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+  ],
   transactions: [
     {
       type: {
