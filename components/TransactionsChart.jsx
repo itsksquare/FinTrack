@@ -60,7 +60,7 @@ const TransactionsChart = ({ transactions }) => {
   return (
     <>
       {lineData && (
-        <div className="w-full my-4">
+        <div className="w-full my-2 py-4 px-2 bg-black/30 rounded-lg">
           <Line data={lineData} options={{ maintainAspectRatio: false }} />
         </div>
       )}

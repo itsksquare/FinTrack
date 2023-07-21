@@ -3,7 +3,7 @@
 import { DreamProductCategories, TiersList } from "@/utils/Utils";
 import Image from "next/image";
 import { ArrowRightIcon, LockClosedIcon } from "@radix-ui/react-icons";
-import { CheckCircle, SettingsIcon } from "lucide-react";
+import { CheckCircle, ScanLine } from "lucide-react";
 import { Progress } from "./ui/progress";
 import Link from "next/link";
 
@@ -33,7 +33,7 @@ const HomeProfile = ({ session }) => {
 
   return (
     <>
-      <div className="flex flex-col w-full p-5">
+      <div className="flex flex-col w-full p-5 bg-[url('/background3.jpg')] bg-cover min-h-screen">
         <div className="flex flex-row w-full justify-between mt-5">
           <div className="w-1/2">
             <p className="text-sm">Welcome back,</p>
@@ -57,7 +57,9 @@ const HomeProfile = ({ session }) => {
                 />
               ) : null}
             </Link>
-            <SettingsIcon className="w-6 h-6 ml-2" />
+            <Link href="/transaction">
+              <ScanLine className="w-6 h-6 ml-2" />
+            </Link>
           </div>
         </div>
         <div className="flex flex-col text-center items-center mt-20">
@@ -88,10 +90,6 @@ const HomeProfile = ({ session }) => {
           </p>
         </div>
         <div className="w-full flex flex-col items-center mt-5">
-          <div className="w-full flex flex-row justify-center m-2">
-            <Link href="/transaction">Scan</Link>&nbsp; / &nbsp;
-            <button>Refresh</button>
-          </div>
           <Progress value={progressValue()} className="h-5 w-4/5 m-2" />
           <Link
             href="/spends"

@@ -15,19 +15,19 @@ const TierPage = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-between items-center p-5">
+      <div className="flex flex-col justify-start items-center p-5 bg-[url('/background1.jpg')] bg-cover min-h-screen">
         <div className="w-full flex flex-row justify-between items-center">
           <Link href="/">
             <ArrowLeftIcon className="h-5 w-5 m-2" />
           </Link>
-          <p className="text-xs text-gray-400">Track & Milestones</p>
+          <p className="text-xs text-gray-300">Track & Milestones</p>
           <SettingsIcon className="h-5 w-5 m-2" />
         </div>
         <div className="w-full flex flex-col justify-center items-center mt-10 mb-5">
           <h2 className="text-xl font-semibold">
             Welcome to Milestone Unlocker
           </h2>
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-gray-300">
             Tokens Present: {session?.user.currentTokens}
           </p>
         </div>
@@ -35,7 +35,7 @@ const TierPage = () => {
           {TiersList.map((tier) => (
             <div
               key={tier.id}
-              className="w-full flex flex-row justify-between items-center p-4 bg-[#131313] rounded-3xl my-1"
+              className="w-full flex flex-row justify-between items-center p-4 bg-gray-500/25 rounded-3xl my-1"
             >
               <p>{tier.name}</p>
               {session?.user.currentTier &&

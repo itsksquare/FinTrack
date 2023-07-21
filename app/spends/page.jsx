@@ -35,7 +35,7 @@ const SpendsPage = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-between items-center p-5">
+      <div className="flex flex-col justify-between items-center p-5 bg-[url('/background1.jpg')] bg-cover min-h-screen">
         <div className="w-full flex flex-row justify-between items-center">
           <Link href="/">
             <ArrowLeftIcon className="h-5 w-5 m-2" />
@@ -44,7 +44,7 @@ const SpendsPage = () => {
           <SettingsIcon className="h-5 w-5 m-2" />
         </div>
         <div className="w-full flex flex-col my-5">
-          <p className="text-sm text-gray-500">Your Current Expenses</p>
+          <p className="text-sm text-gray-400">Your Current Expenses</p>
           {session?.user.transactions.length > 0 && (
             <h2 className="text-xl font-semibold">{getTransactions()}</h2>
           )}
@@ -60,15 +60,18 @@ const SpendsPage = () => {
         )}
         {session?.user.transactions.length > 0 && (
           <>
-            <TransactionsChart transactions={session?.user.transactions} />
+            <TransactionsChart
+              transactions={session?.user.transactions}
+              className="backdrop-blur-lg rounded-lg"
+            />
             <CategoriesChart transactions={session?.user.transactions} />
-            <div className="w-full flex flex-col my-5 p-2 bg-gray-300/10 rounded-lg">
+            <div className="w-full flex flex-col my-5 p-2 bg-black/20 rounded-lg">
               <h2 className="text-lg p-1 font-semibold">Latest Transactions</h2>
               <div className="w-full flex flex-col mt-3 p-1 overflow-y-scroll">
                 {session?.user.transactions.map((transaction, index) => (
                   <div
                     key={index}
-                    className="w-full flex flex-row justify-between items-center py-2 px-4 bg-gray-300/20 rounded-lg mb-2"
+                    className="w-full flex flex-row justify-between items-center py-2 px-4 bg-black/20 rounded-lg mb-2"
                   >
                     <div className="flex flex-col">
                       <p className="text-lg font-normal">
@@ -81,7 +84,7 @@ const SpendsPage = () => {
                         {new Date(transaction.date).toLocaleTimeString()}
                       </p>
                     </div>
-                    <h2 className="text-green-600 text-xl">
+                    <h2 className="text-green-500 text-xl">
                       {transaction.amount}
                     </h2>
                   </div>

@@ -41,16 +41,16 @@ const SelectProduct = ({ session }) => {
 
   return (
     <>
-      <div className="w-full flex flex-col items-center justify-center mt-10 p-4">
+      <div className="w-full flex flex-col items-center justify-start pt-10 p-4 bg-[url('/background4.jpg')] bg-cover min-h-screen">
         <Image
           priority
           src="/bajaj-finserv.svg"
           width={60}
           height={60}
           alt="Bajaj"
-          className="h-auto w-auto"
+          className="h-16 w-auto"
         />
-        <h1 className="w-full text-center text-2xl mt-5">
+        <h1 className="w-full text-center text-2xl pt-5">
           Welcome to your Dream Service/Product Selector
         </h1>
         <div className="w-full flex flex-col items-start p-2 mt-5">
