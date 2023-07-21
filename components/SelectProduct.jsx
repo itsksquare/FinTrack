@@ -4,13 +4,6 @@ import { useState } from "react";
 
 import { DreamProductCategories } from "@/utils/Utils";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-
 import Image from "next/image";
 import { Label } from "./ui/label";
 import { Button } from "./ui/button";
@@ -18,6 +11,8 @@ import { Button } from "./ui/button";
 const SelectProduct = ({ session }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedProduct, setSelectedProduct] = useState("");
+
+  const [productCategories, setProductCategories] = useState("");
 
   const handleProductSelect = (product, category) => (e) => {
     setSelectedCategory(category.key);
@@ -60,36 +55,43 @@ const SelectProduct = ({ session }) => {
         </h1>
         <div className="w-full flex flex-col items-start p-2 mt-5">
           <Label className="my-2">Choose your product</Label>
-          <Accordion type="single" collapsible className="w-full">
-            {DreamProductCategories.map((category) => (
-              <AccordionItem value={category.key} key={category.id}>
-                <AccordionTrigger>{category.name}</AccordionTrigger>
-                <AccordionContent className="w-full grid grid-cols-2 gap-1">
-                  {category.products.map((product) => (
-                    <div key={product.id}>
-                      <div
-                        className={`w-full flex flex-col items-center justify-center border rounded-md p-1 m-1 ${
-                          product.key === selectedProduct
-                            ? "border-blue-500 bg-[#131313]"
-                            : "border-gray-500"
-                        }`}
-                        onClick={handleProductSelect(product, category)}
-                      >
-                        <Image
-                          src={product.image}
-                          width={70}
-                          height={70}
-                          className="h-auto w-auto"
-                          alt={product.name}
-                        />
-                        <p className="text-sm text-center">{product.name}</p>
-                      </div>
+          {DreamProductCategories.map((category) => (
+            <div key={category.key} className="w-full">
+              <h2
+                className="p-2 mb-2 border-b border-gray-500 cursor-pointer"
+                onClick={() => setProductCategories(category.key)}
+              >
+                {category.name}
+              </h2>
+              <div
+                className={`w-full grid grid-cols-3 grid-flow-row gap-1 ${
+                  productCategories === category.key ? "block" : "hidden"
+                }`}
+              >
+                {category.products.map((product) => (
+                  <div key={product.id}>
+                    <div
+                      className={`w-full flex flex-col items-center h-32 justify-between border rounded-md p-1 m-1 ${
+                        product.key === selectedProduct
+                          ? "border-blue-500 bg-[#131313]"
+                          : "border-gray-500"
+                      }`}
+                      onClick={handleProductSelect(product, category)}
+                    >
+                      <Image
+                        src={product.image}
+                        width={90}
+                        height={90}
+                        className="h-20 w-auto"
+                        alt={product.name}
+                      />
+                      <p className="text-sm text-center">{product.name}</p>
                     </div>
-                  ))}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
         {selectedProduct && (
           <div className="w-full flex flex-col items-start p-2 mt-5">
