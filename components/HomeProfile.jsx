@@ -1,6 +1,6 @@
 "use client";
 
-import { DreamProductCategories } from "@/utils/Utils";
+import { DreamProductCategories, TiersList } from "@/utils/Utils";
 import Image from "next/image";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { CheckCircle, SettingsIcon } from "lucide-react";
@@ -22,8 +22,21 @@ const HomeProfile = ({ session }) => {
               <Link href="/profile">{session?.user.name}</Link>
             </p>
           </div>
-          <div className="flex flex-rw w-1/3 items-end justify-end">
-            <Link href="/tiers">{session?.user.currentTier}</Link>
+          <div className="flex flex-row w-1/3 items-center justify-end">
+            <Link href="/tiers">
+              {session ? (
+                <Image
+                  src={
+                    TiersList.find(
+                      (tier) => tier.key === session?.user.currentTier
+                    ).image
+                  }
+                  alt={session?.user.currentTier}
+                  width={30}
+                  height={50}
+                />
+              ) : null}
+            </Link>
             <SettingsIcon className="w-6 h-6 ml-2" />
           </div>
         </div>
