@@ -52,7 +52,7 @@ const UserSchema = new Schema({
       },
       category: {
         type: String,
-        required: [true, "Category is required!"],
+        default: "Others",
         enum: [
           "Shopping",
           "Food",
@@ -73,7 +73,6 @@ const UserSchema = new Schema({
       },
       image: {
         type: String,
-        required: [true, "Image is required!"],
       },
     },
   ],
