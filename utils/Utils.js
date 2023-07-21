@@ -9,22 +9,19 @@ module.exports = {
           id: 1,
           name: "Cards",
           key: "cards",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/card.png",
         },
         {
           id: 2,
           name: "Insurance",
           key: "insurance",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/insurance.png",
         },
         {
           id: 3,
           name: "Loans",
           key: "loans",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/Loan.png",
         },
       ],
     },
@@ -37,29 +34,37 @@ module.exports = {
           id: 1,
           name: "AirPods",
           key: "airpods",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/AirPods.png",
         },
         {
           id: 2,
           name: "AirPods Pro",
           key: "airpods-pro",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/Airpods-pro.png",
         },
         {
           id: 3,
           name: "Sony XMH3",
           key: "sony-xmh3",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/SOny-xmh3.png",
         },
         {
           id: 4,
           name: "OnePlus Buds",
           key: "oneplus-buds",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/oneplus-buds.png",
+        },
+        {
+          id: 5,
+          name: "Nothing Ear(2)",
+          key: "nothing-ear(2)",
+          image: "/ProductImages/nothingear2.png",
+        },
+        {
+          id: 6,
+          name: "Google Pixel Buds",
+          key: "google-pixel-buds",
+          image: "/ProductImages/pixelbuds.png",
         },
       ],
     },
@@ -70,31 +75,39 @@ module.exports = {
       products: [
         {
           id: 1,
-          name: "Amazfit XYZ",
-          key: "amazfit-xyz",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          name: "Amazfit GTR4",
+          key: "amazfit-gtr4",
+          image: "/ProductImages/amazfitgtr4.png",
         },
         {
           id: 2,
           name: "Apple Watch",
           key: "apple-watch",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/Apple-watch.png",
         },
         {
           id: 3,
           name: "OnePlus Watch",
           key: "oneplus-watch",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/oneplus-watch.png",
         },
         {
           id: 4,
-          name: "Samsung Galaxy Watch",
-          key: "samsung-galaxy-watch",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          name: "Samsung Galaxy Watch 5",
+          key: "samsung-galaxy-watch5",
+          image: "/ProductImages/samsung-watch5.png",
+        },
+        {
+          id: 5,
+          name: "Samsung Galaxy Watch 5 Pro",
+          key: "samsung-galaxy-watch-5-Pro",
+          image: "/ProductImages/samsungwatch5pro.png",
+        },
+        {
+          id: 6,
+          name: "Apple Watch Ultra",
+          key: "watch-ultra.png",
+          image: "/ProductImages/Apple-watch.png",
         },
       ],
     },
@@ -105,31 +118,39 @@ module.exports = {
       products: [
         {
           id: 1,
-          name: "iPhone 12",
-          key: "iphone-12",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          name: "iPhone 13",
+          key: "iphone-13",
+          image: "/ProductImages/iphone12.png",
         },
         {
           id: 2,
           name: "Samsung Galaxy S21",
           key: "samsung-galaxy-s21",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/samsungs21.png",
         },
         {
           id: 3,
-          name: "OnePlus 9",
-          key: "oneplus-9",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          name: "OnePlus 11",
+          key: "oneplus-11",
+          image: "/ProductImages/oneplus11.png",
         },
         {
           id: 4,
           name: "Google Pixel 7",
           key: "google-pixel-7",
-          image:
-            "https://plus.unsplash.com/premium_photo-1677607237201-64668c2266ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHx0b3BpYy1mZWVkfDF8eGpQUjRobGtCR0F8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1400&q=60",
+          image: "/ProductImages/pixel7.png",
+        },
+        {
+          id: 5,
+          name: "iPhone 14",
+          key: "iphone-14",
+          image: "/ProductImages/iphone14.png",
+        },
+        {
+          id: 6,
+          name: "Samsung Z Flip",
+          key: "samsung-z-flip",
+          image: "/ProductImages/zflip.png",
         },
       ],
     },
@@ -206,6 +227,7 @@ module.exports = {
       tokenStart: 0,
       tokenEnd: 1000,
       amountRatio: 0.03,
+      image: "/Tiers/bronze.png",
     },
     {
       id: 2,
@@ -214,6 +236,7 @@ module.exports = {
       tokenStart: 1001,
       tokenEnd: 6000,
       amountRatio: 0.05,
+      image: "/Tiers/silver.png",
     },
     {
       id: 3,
@@ -222,6 +245,7 @@ module.exports = {
       tokenStart: 6001,
       tokenEnd: 15000,
       amountRatio: 0.06,
+      image: "/Tiers/gold.png",
     },
     {
       id: 4,
@@ -230,6 +254,7 @@ module.exports = {
       tokenStart: 15001,
       tokenEnd: 25000,
       amountRatio: 0.07,
+      image: "/Tiers/diamond.png",
     },
     {
       id: 5,
@@ -238,6 +263,7 @@ module.exports = {
       tokenStart: 25000,
       tokenEnd: 50000,
       amountRatio: 0.08,
+      image: "/Tiers/elite.png",
     },
   ],
   TransactionCategories: [
