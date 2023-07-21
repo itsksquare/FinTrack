@@ -21,6 +21,7 @@ const handler = NextAuth({
       session.user.dreamProduct = sessionUser.dreamProduct;
       session.user.lastTransactionRefresh = sessionUser.lastTransactionRefresh;
       session.user.transactions = sessionUser.transactions;
+      session.user.referKey = sessionUser.referKey;
 
       {
         TiersList.map((tier) => {
@@ -51,6 +52,7 @@ const handler = NextAuth({
             name: profile.name,
             username: profile.name.split(" ").join("").toLowerCase(),
             image: profile.picture,
+            referKey: profile.name.split(" ").join("").toLowerCase(),
           });
         }
 

@@ -34,6 +34,9 @@ const UserSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  referKey: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
