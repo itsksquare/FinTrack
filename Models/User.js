@@ -43,6 +43,9 @@ const UserSchema = new Schema({
   },
   transactions: [
     {
+      type: {
+        type: String,
+      },
       date: {
         type: Date,
         default: Date.now,
