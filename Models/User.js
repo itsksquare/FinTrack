@@ -18,17 +18,9 @@ const UserSchema = new Schema({
     type: String,
     default: null,
   },
-  password: {
-    type: string,
-  },
   currentTokens: {
     type: Number,
     default: 0,
-  },
-  currentTier: {
-    type: String,
-    default: "Bronze",
-    enum: ["Bronze", "Silver", "Gold", "Diamond", "Elite"],
   },
   dreamProductType: {
     type: String,
