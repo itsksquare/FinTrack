@@ -1,32 +1,27 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 
 import { DreamProductCategories } from "@/utils/Utils";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 import Image from "next/image";
 import { Label } from "./ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { Button } from "./ui/button";
 
 const SelectProduct = ({ session }) => {
-  const router = useRouter();
-  const [category, setCategory] = useState("");
-  const [product, setProduct] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedProduct, setSelectedProduct] = useState("");
 
-  const handleCategoryChange = (e) => {
-    setCategory(e);
-  };
-
-  const handleProductChange = (e) => {
-    setProduct(e);
+  const handleProductSelect = (product, category) => (e) => {
+    setSelectedCategory(category.key);
+    setSelectedProduct(product.key);
   };
 
   const handleSubmit = async (e) => {
@@ -36,13 +31,13 @@ const SelectProduct = ({ session }) => {
       const res = await fetch(`/api/user/${session.user.id}`, {
         method: "PATCH",
         body: JSON.stringify({
-          category,
-          product,
+          category: selectedCategory,
+          product: selectedProduct,
         }),
       });
 
       if (res.ok) {
-        router.refresh();
+        window.location.reload();
       }
     } catch (error) {
       console.log(error);
@@ -52,45 +47,51 @@ const SelectProduct = ({ session }) => {
   return (
     <>
       <div className="w-full flex flex-col items-center justify-center mt-10 p-4">
-        <Image src="/bajaj-finserv.svg" width={300} height={300} alt="Bajaj" />
+        <Image
+          priority
+          src="/bajaj-finserv.svg"
+          width={60}
+          height={60}
+          alt="Bajaj"
+          className="h-auto w-auto"
+        />
         <h1 className="w-full text-center text-2xl mt-5">
           Welcome to your Dream Service/Product Selector
         </h1>
         <div className="w-full flex flex-col items-start p-2 mt-5">
           <Label className="my-2">Choose your product</Label>
-          <Select className="my-2" onValueChange={handleCategoryChange}>
-            <SelectTrigger className="w-full">
-              <SelectValue placeholder="Category" />
-            </SelectTrigger>
-            <SelectContent>
-              {DreamProductCategories.categories.map((product) => (
-                <SelectItem key={product.id} value={product.key}>
-                  {product.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-        {category && (
-          <div className="w-full flex flex-col items-start p-2 mt-5">
-            <Label className="my-2">Choose your product</Label>
-            <Select className="my-2" onValueChange={handleProductChange}>
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Product" />
-              </SelectTrigger>
-              <SelectContent>
-                {DreamProductCategories.categories
-                  .find((prod) => prod.key === category)
-                  .products.map((product) => (
-                    <SelectItem key={product.id} value={product.key}>
-                      {product.name}
-                    </SelectItem>
+          <Accordion type="single" collapsible className="w-full">
+            {DreamProductCategories.map((category) => (
+              <AccordionItem value={category.key} key={category.id}>
+                <AccordionTrigger>{category.name}</AccordionTrigger>
+                <AccordionContent className="w-full grid grid-cols-2 gap-1">
+                  {category.products.map((product) => (
+                    <div key={product.id}>
+                      <div
+                        className={`w-full flex flex-col items-center justify-center border rounded-md p-1 m-1 ${
+                          product.key === selectedProduct
+                            ? "border-blue-500 bg-[#131313]"
+                            : "border-gray-500"
+                        }`}
+                        onClick={handleProductSelect(product, category)}
+                      >
+                        <Image
+                          src={product.image}
+                          width={70}
+                          height={70}
+                          className="h-auto w-auto"
+                          alt={product.name}
+                        />
+                        <p className="text-sm text-center">{product.name}</p>
+                      </div>
+                    </div>
                   ))}
-              </SelectContent>
-            </Select>
-          </div>
-        )}
-        {product && (
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+        {selectedProduct && (
           <div className="w-full flex flex-col items-start p-2 mt-5">
             <Button className="w-full gradient_btn" onClick={handleSubmit}>
               Submit
