@@ -2,12 +2,31 @@
 
 import { DreamProductCategories, TiersList } from "@/utils/Utils";
 import Image from "next/image";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { ArrowRightIcon, LockClosedIcon } from "@radix-ui/react-icons";
 import { CheckCircle, SettingsIcon } from "lucide-react";
 import { Progress } from "./ui/progress";
 import Link from "next/link";
 
 const HomeProfile = ({ session }) => {
+  const progressValue = () => {
+    let total = 0;
+
+    session.user.transactions.forEach((transaction) => {
+      if (transaction.narration?.toLowerCase().includes("policybazaar")) {
+        total += transaction.amount;
+      }
+    });
+
+    return (
+      (total /
+        DreamProductCategories.find(
+          (category) => category.key === session.user.dreamProductType
+        ).products.find((product) => product.key === session.user.dreamProduct)
+          .investAmount) *
+      100
+    );
+  };
+
   const dreamProduct = DreamProductCategories.find(
     (cat) => cat.key === session?.user.dreamProductType
   ).products.find((prod) => prod.key === session?.user.dreamProduct);
@@ -26,6 +45,7 @@ const HomeProfile = ({ session }) => {
             <Link href="/tiers">
               {session ? (
                 <Image
+                  priority
                   src={
                     TiersList.find(
                       (tier) => tier.key === session?.user.currentTier
@@ -33,7 +53,7 @@ const HomeProfile = ({ session }) => {
                   }
                   alt={session?.user.currentTier}
                   width={30}
-                  height={50}
+                  height={30}
                 />
               ) : null}
             </Link>
@@ -48,23 +68,31 @@ const HomeProfile = ({ session }) => {
           <p className="text-lg text-gray-300">
             {session?.user.currentTokens} Tokens Present
           </p>
-          <Image
-            src={dreamProduct.image}
-            alt={dreamProduct.name}
-            width={200}
-            height={200}
-            className="rounded-full mt-16"
-          />
+          <div className="relative">
+            <Image
+              priority
+              src={dreamProduct.image}
+              alt={dreamProduct.name}
+              width={200}
+              height={200}
+              className={`mt-16 block ${
+                progressValue() < 100 ? "opacity-20" : ""
+              }`}
+            />
+            {progressValue() < 100 ? (
+              <LockClosedIcon className="absolute top-1/2 left-1/2 transform -translate-x-1/2 w-16 h-16" />
+            ) : null}
+          </div>
+          <p className="text-sm text-gray-400">
+            {progressValue() < 100 ? "Product Locked" : "Product Unlocked"}
+          </p>
         </div>
         <div className="w-full flex flex-col items-center mt-5">
           <div className="w-full flex flex-row justify-center m-2">
             <Link href="/transaction">Scan</Link>&nbsp; / &nbsp;
             <button>Refresh</button>
           </div>
-          <Progress
-            value={session?.user.tierProgress}
-            className="h-5 w-4/5 m-2"
-          />
+          <Progress value={progressValue()} className="h-5 w-4/5 m-2" />
           <Link
             href="/spends"
             className="rounded-full py-3 m-5 gradient_btn flex flex-row justify-between"
