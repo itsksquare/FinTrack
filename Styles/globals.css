@@ -76,3 +76,11 @@
     @apply bg-background text-foreground;
   }
 }
+
+.gradient_btn {
+  @apply bg-gradient-to-r from-blue-700  via-purple-700  to-pink-500 text-white;
+}
+
+.gradient_bg {
+  @apply bg-gradient-to-b from-blue-700 from-30% via-purple-700 via-60% to-pink-500 h-screen;
+}
