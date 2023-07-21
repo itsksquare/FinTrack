@@ -4,6 +4,7 @@ module.exports = {
       id: 1,
       name: "Bajaj Services (More Rewarding)",
       key: "bajaj-services",
+      type: "non-tech",
       products: [
         {
           id: 1,
@@ -32,6 +33,7 @@ module.exports = {
       id: 2,
       name: "Audio Device",
       key: "audio-device",
+      type: "tech",
       products: [
         {
           id: 1,
@@ -70,8 +72,8 @@ module.exports = {
         },
         {
           id: 6,
-          name: "Google Pixel Buds",
-          key: "google-pixel-buds",
+          name: "Pixel Buds",
+          key: "pixel-buds",
           image: "/ProductImages/pixelbuds.png",
           investAmount: 2500,
         },
@@ -81,6 +83,8 @@ module.exports = {
       id: 3,
       name: "Wearables",
       key: "wearables",
+      type: "tech",
+
       products: [
         {
           id: 1,
@@ -105,15 +109,15 @@ module.exports = {
         },
         {
           id: 4,
-          name: "Samsung Galaxy Watch 5",
-          key: "samsung-galaxy-watch5",
+          name: "Galaxy Watch 5",
+          key: "galaxy-watch5",
           image: "/ProductImages/samsung-watch5.png",
           investAmount: 8000,
         },
         {
           id: 5,
-          name: "Samsung Galaxy Watch 5 Pro",
-          key: "samsung-galaxy-watch-5-Pro",
+          name: "Galaxy Watch 5 Pro",
+          key: "galaxy-watch-5-Pro",
           image: "/ProductImages/samsungwatch5pro.png",
           investAmount: 12000,
         },
@@ -130,6 +134,7 @@ module.exports = {
       id: 4,
       name: "Smartphones",
       key: "smartphones",
+      type: "tech",
       products: [
         {
           id: 1,
@@ -249,6 +254,24 @@ module.exports = {
       tokenEnd: 1000,
       amountRatio: 0.15,
       image: "/Tiers/bronze.png",
+      nonmonetaryRewards: [
+        {
+          id: 1,
+          key: "warranty",
+          name: "Warranty Extension",
+          type: "tech",
+          tokens: 900,
+        },
+      ],
+      monetaryRewards: [
+        {
+          id: 1,
+          key: "5%offon2",
+          name: "5% Off On Second Product",
+          type: "tech",
+          tokens: 900,
+        },
+      ],
     },
     {
       id: 2,
@@ -258,6 +281,24 @@ module.exports = {
       tokenEnd: 6000,
       amountRatio: 0.18,
       image: "/Tiers/silver.png",
+      nonmonetaryRewards: [
+        {
+          id: 1,
+          key: "lowcost",
+          name: "Low Cost EMI",
+          type: "tech",
+          tokens: 5000,
+        },
+      ],
+      monetaryRewards: [
+        {
+          id: 1,
+          key: "nonapplewatch",
+          name: "550 Off On Werables",
+          type: "tech",
+          tokens: 5000,
+        },
+      ],
     },
     {
       id: 3,
@@ -267,6 +308,31 @@ module.exports = {
       tokenEnd: 15000,
       amountRatio: 0.2,
       image: "/Tiers/gold.png",
+      nonmonetaryRewards: [
+        {
+          id: 1,
+          key: "pricematch",
+          name: "Price Matching",
+          type: "tech",
+          tokens: 13000,
+        },
+      ],
+      monetaryRewards: [
+        {
+          id: 1,
+          key: "5percentoff",
+          name: "5% Off",
+          type: "tech",
+          tokens: 9000,
+        },
+        {
+          id: 2,
+          key: "audiooff",
+          name: "750 Off On Audio Products",
+          type: "tech",
+          tokens: 15000,
+        },
+      ],
     },
     {
       id: 4,
@@ -276,6 +342,45 @@ module.exports = {
       tokenEnd: 25000,
       amountRatio: 0.23,
       image: "/Tiers/diamond.png",
+      nonmonetaryRewards: [
+        {
+          id: 1,
+          key: "pricelock",
+          name: "Price Locking",
+          type: "tech",
+          tokens: 19000,
+        },
+        {
+          id: 2,
+          key: "duedateextension",
+          name: "Due Date Extension",
+          type: "non-tech",
+          tokens: 22000,
+        },
+      ],
+      monetaryRewards: [
+        {
+          id: 1,
+          key: "10percentoff",
+          name: "10% Off",
+          type: "tech",
+          tokens: 23000,
+        },
+        {
+          id: 2,
+          key: "noclaim",
+          name: "No Claim Bonus",
+          type: "non-tech",
+          tokens: 16000,
+        },
+        {
+          id: 3,
+          key: "annualfeewavier",
+          name: "Annual Fee Wavier",
+          type: "non-tech",
+          tokens: 19000,
+        },
+      ],
     },
     {
       id: 5,
@@ -285,6 +390,45 @@ module.exports = {
       tokenEnd: 50000,
       amountRatio: 0.25,
       image: "/Tiers/elite.png",
+      nonmonetaryRewards: [
+        {
+          id: 1,
+          key: "nocostemi",
+          name: "No Cost EMI",
+          type: "tech",
+          tokens: 33000,
+        },
+        {
+          id: 2,
+          key: "combineddiscount",
+          name: "F&F Combined Discount",
+          type: "tech",
+          tokens: 44000,
+        },
+      ],
+      monetaryRewards: [
+        {
+          id: 1,
+          key: "15percentoff",
+          name: "15% Off",
+          type: "tech",
+          tokens: 34000,
+        },
+        {
+          id: 2,
+          key: "1500offf",
+          name: "1500 OFF",
+          type: "tech",
+          tokens: 37000,
+        },
+        {
+          id: 3,
+          key: "flexipay",
+          name: "Flexible Repayment Option",
+          type: "non-tech",
+          tokens: 45000,
+        },
+      ],
     },
   ],
   TransactionCategories: [
