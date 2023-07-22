@@ -15,6 +15,7 @@ import {
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useState, useRef } from "react";
+import Login from "@/components/Login";
 
 const ReferralsPage = () => {
   const { data: session } = useSession();

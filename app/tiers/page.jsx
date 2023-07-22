@@ -9,6 +9,7 @@ import {
 import { SettingsIcon } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { TiersList } from "@/utils/Utils";
+import Login from "@/components/Login";
 
 const TierPage = () => {
   const { data: session } = useSession();

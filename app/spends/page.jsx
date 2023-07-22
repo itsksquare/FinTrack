@@ -19,6 +19,7 @@ Chart.register(ArcElement);
 Chart.register(LinearScale);
 Chart.register(PointElement);
 Chart.register(LineElement);
+import Login from "@/components/Login";
 
 const SpendsPage = () => {
   const { data: session } = useSession();

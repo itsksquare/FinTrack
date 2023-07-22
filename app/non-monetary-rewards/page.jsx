@@ -11,6 +11,7 @@ import { TiersList, DreamProductCategories } from "@/utils/Utils";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { useState, useRef } from "react";
+import Login from "@/components/Login";
 
 const NonMonetaryRewards = () => {
   const { data: session } = useSession();

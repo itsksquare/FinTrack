@@ -18,6 +18,7 @@ import { TransactionCategories } from "@/utils/Utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import Webcam from "react-webcam";
+import Login from "@/components/Login";
 
 const TransactionPage = () => {
   const { data: session } = useSession();
