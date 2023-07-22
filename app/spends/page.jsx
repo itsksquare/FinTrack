@@ -94,6 +94,7 @@ const SpendsPage = () => {
               <div className="w-full flex flex-col mt-3 p-1 overflow-y-scroll">
                 {session?.user.transactions
                   .filter((transaction) => transaction.type !== "CREDIT")
+                  .reverse()
                   .map((transaction, index) => (
                     <div
                       key={index}
