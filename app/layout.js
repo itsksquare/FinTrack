@@ -1,5 +1,5 @@
 import Provider from "@/components/Provider";
-import "@/styles/globals.css";
+import "@/Styles/globals.css";
 
 export const metadata = {
   title: "FinTrack financial management app!",
