@@ -15,6 +15,8 @@ const MonetaryRewards = () => {
   const { data: session } = useSession();
   const router = useRouter();
 
+  if (!session) return <Login />;
+
   const [showPopup, setShowPopup] = useState(false);
   const [rewardKey, setRewardKey] = useState("");
   const hideElementRef = useRef(null);
@@ -32,8 +34,6 @@ const MonetaryRewards = () => {
       setShowPopup(false);
     }
   };
-
-  if (!session) return null;
 
   return (
     <>

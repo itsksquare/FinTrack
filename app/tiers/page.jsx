@@ -13,6 +13,8 @@ import { TiersList } from "@/utils/Utils";
 const TierPage = () => {
   const { data: session } = useSession();
 
+  if (!session) return <Login />;
+
   return (
     <>
       <div className="flex flex-col justify-start items-center p-5 bg-[url('/background1.jpg')] bg-cover min-h-screen">

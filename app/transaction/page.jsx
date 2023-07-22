@@ -22,6 +22,9 @@ import Webcam from "react-webcam";
 const TransactionPage = () => {
   const { data: session } = useSession();
   const router = useRouter();
+
+  if (!session) return <Login />;
+
   const [facingMode, setFacingMode] = useState("environment");
   const [transaction, setTransaction] = useState({
     title: "",

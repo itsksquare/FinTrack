@@ -8,9 +8,10 @@ import {
 } from "@radix-ui/react-icons";
 import { CheckCircle } from "lucide-react";
 import { DollarSign, ListTreeIcon, SettingsIcon } from "lucide-react";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import Login from "@/components/Login";
 
 const ProfilePage = () => {
   const { data: session } = useSession();
@@ -30,7 +31,7 @@ const ProfilePage = () => {
     }
   };
 
-  if (!session) return null;
+  if (!session) return <Login />;
 
   return (
     <>
@@ -114,12 +115,12 @@ const ProfilePage = () => {
         <div className="w-full flex flex-col p-4">
           <p className="text-md font-light text-gray-500 my-2">Options</p>
           <div className="w-full flex flex-row justify-between items-center">
-            <Link
-              href="/"
+            <button
+              onClick={() => signOut()}
               className="w-2/5 bg-[#131313] rounded-3xl p-3 my-1 text-center text-sm text-gray-300"
             >
-              Bg Feature
-            </Link>
+              Logout
+            </button>
             <Link
               href="/"
               className="w-2/5 bg-[#131313] rounded-3xl p-3 my-1 text-center text-sm text-gray-300"

@@ -23,11 +23,13 @@ Chart.register(LineElement);
 const SpendsPage = () => {
   const { data: session } = useSession();
 
+  if (!session) return <Login />;
+
   const getExpenses = () => {
     let expenses = 0;
 
     session?.user.transactions
-      .filter((transaction) => transaction.type === "DEBIT")
+      .filter((transaction) => transaction.type !== "CREDIT")
       .forEach((transaction) => {
         transaction;
         expenses += transaction.amount;
@@ -85,7 +87,7 @@ const SpendsPage = () => {
         {session?.user.transactions.length > 0 && (
           <>
             <TransactionsChart
-              transactions={session?.user.transactions}
+              transactions={session?.user.transaction}
               className="backdrop-blur-lg rounded-lg"
             />
             <CategoriesChart transactions={session?.user.transactions} />
