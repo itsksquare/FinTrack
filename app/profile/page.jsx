@@ -12,7 +12,6 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
 import Login from "@/components/Login";
-import Login from "@/components/Login";
 
 const ProfilePage = () => {
   const { data: session } = useSession();
