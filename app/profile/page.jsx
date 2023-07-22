@@ -1,6 +1,6 @@
 "use client";
 
-import SelectProduct from "@/components/SelectProduct";
+import { useState, useRef } from "react";
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -14,11 +14,48 @@ import Link from "next/link";
 
 const ProfilePage = () => {
   const { data: session } = useSession();
+  const [showPopup, setShowPopup] = useState(false);
+  const hideElementRef = useRef(null);
 
-  if (!session?.user.dreamProduct) return <SelectProduct session={session} />;
+  const handleShowPopup = () => {
+    setShowPopup(true);
+  };
+
+  const handleClosePopup = (event) => {
+    if (
+      !hideElementRef.current ||
+      !hideElementRef.current.contains(event.target)
+    ) {
+      setShowPopup(false);
+    }
+  };
+
+  if (!session) return null;
 
   return (
     <>
+      {showPopup && (
+        <div
+          className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-70 flex justify-center items-center z-50"
+          id="popupContainer"
+          onClick={handleClosePopup}
+        >
+          <div
+            className="h-72 w-72 p-5 bg-no-repeat flex flex-col justify-between items-center bg-center bg-contain bg-[url('/rocket.png')]"
+            ref={hideElementRef}
+          >
+            <div className="text-pink-600 text-base font-bold">
+              Your Referral Code:
+            </div>
+            <div className="text-pink-700 text-3xl font-bold">
+              {session.user.referKey.toUpperCase()}
+            </div>
+            <button className="bg-pink-500 shadow-inner shadow-black-950 text-white font-medium rounded-3xl p-2 w-24 h-10">
+              Copy
+            </button>
+          </div>
+        </div>
+      )}
       <div className="flex flex-col justify-between items-center p-5">
         <div className="w-full flex flex-row justify-between items-center">
           <Link href="/">
@@ -27,6 +64,7 @@ const ProfilePage = () => {
           <SettingsIcon className="h-5 w-5 m-2" />
         </div>
         <Image
+          priority
           src={session?.user.image}
           width={150}
           height={150}
@@ -36,7 +74,10 @@ const ProfilePage = () => {
         <p className="text-2xl font-semibold">{session?.user.name}</p>
         <p className="text-sm text-gray-500">Time till birthday: 250 day(s)</p>
         <div>
-          <button className="rounded-full py-3 m-5 gradient_btn flex flex-row justify-between">
+          <button
+            className="rounded-full py-3 m-5 gradient_btn flex flex-row justify-between"
+            onClick={handleShowPopup}
+          >
             <CheckCircle className="h-4 w-4 my-1 mx-3" />
             Refer Someone Now!
             <ArrowRightIcon className="h-4 w-4 my-1 mx-5" />
