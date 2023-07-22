@@ -23,19 +23,35 @@ Chart.register(LineElement);
 const SpendsPage = () => {
   const { data: session } = useSession();
 
-  const getTransactions = () => {
-    let total = 0;
+  const getExpenses = () => {
+    let expenses = 0;
 
-    session?.user.transactions.forEach((transaction) => {
-      total += transaction.amount;
-    });
+    session?.user.transactions
+      .filter((transaction) => transaction.type === "DEBIT")
+      .forEach((transaction) => {
+        transaction;
+        expenses += transaction.amount;
+      });
 
-    return total;
+    return expenses;
+  };
+
+  const getIncome = () => {
+    let income = 0;
+
+    session?.user.transactions
+      .filter((transaction) => transaction.type === "CREDIT")
+      .forEach((transaction) => {
+        transaction;
+        income += transaction.amount;
+      });
+
+    return income;
   };
 
   return (
     <>
-      <div className="flex flex-col justify-between items-center p-5 bg-[url('/background1.jpg')] bg-cover min-h-screen">
+      <div className="flex flex-col justify-start items-center p-5 bg-[url('/background1.jpg')] bg-cover min-h-screen">
         <div className="w-full flex flex-row justify-between items-center">
           <Link href="/">
             <ArrowLeftIcon className="h-5 w-5 m-2" />
@@ -43,11 +59,19 @@ const SpendsPage = () => {
           <p className="text-xs text-gray-400">Track Spends</p>
           <SettingsIcon className="h-5 w-5 m-2" />
         </div>
-        <div className="w-full flex flex-col my-5">
-          <p className="text-sm text-gray-400">Your Current Expenses</p>
-          {session?.user.transactions.length > 0 && (
-            <h2 className="text-xl font-semibold">{getTransactions()}</h2>
-          )}
+        <div className="w-full flex flex-row my-5">
+          <div className="w-1/2 text-left">
+            <p className="text-sm text-gray-400">Your Total Expenses</p>
+            {session?.user.transactions.length > 0 && (
+              <h2 className="text-xl font-semibold">{getExpenses()}</h2>
+            )}
+          </div>
+          <div className="w-1/2 text-right">
+            <p className="text-sm text-gray-400">Your Total Income</p>
+            {session?.user.transactions.length > 0 && (
+              <h2 className="text-xl font-semibold">{getIncome()}</h2>
+            )}
+          </div>
         </div>
         {session?.user.transactions.length === 0 && (
           <>
@@ -65,30 +89,32 @@ const SpendsPage = () => {
               className="backdrop-blur-lg rounded-lg"
             />
             <CategoriesChart transactions={session?.user.transactions} />
-            <div className="w-full flex flex-col my-5 p-2 bg-black/20 rounded-lg">
+            <div className="w-full flex flex-col my-5 p-2 bg-black/20 rounded-lg h-[30vh]">
               <h2 className="text-lg p-1 font-semibold">Latest Transactions</h2>
               <div className="w-full flex flex-col mt-3 p-1 overflow-y-scroll">
-                {session?.user.transactions.map((transaction, index) => (
-                  <div
-                    key={index}
-                    className="w-full flex flex-row justify-between items-center py-2 px-4 bg-black/20 rounded-lg mb-2"
-                  >
-                    <div className="flex flex-col">
-                      <p className="text-lg font-normal">
-                        <Link href={`/spends/${transaction._id}`}>
-                          {transaction.title}
-                        </Link>
-                      </p>
-                      <p className="text-xs text-gray-400">
-                        {new Date(transaction.date).toLocaleDateString()} |{" "}
-                        {new Date(transaction.date).toLocaleTimeString()}
-                      </p>
+                {session?.user.transactions
+                  .filter((transaction) => transaction.type !== "CREDIT")
+                  .map((transaction, index) => (
+                    <div
+                      key={index}
+                      className="w-full flex flex-row justify-between items-center py-2 px-4 bg-black/20 rounded-lg mb-2"
+                    >
+                      <div className="flex flex-col">
+                        <p className="text-lg font-normal">
+                          <Link href={`/spends/${transaction._id}`}>
+                            {transaction.title.slice(0, 20)}...
+                          </Link>
+                        </p>
+                        <p className="text-xs text-gray-400">
+                          {new Date(transaction.date).toLocaleDateString()} |{" "}
+                          {new Date(transaction.date).toLocaleTimeString()}
+                        </p>
+                      </div>
+                      <h2 className="text-green-500 text-xl">
+                        {transaction.amount}
+                      </h2>
                     </div>
-                    <h2 className="text-green-500 text-xl">
-                      {transaction.amount}
-                    </h2>
-                  </div>
-                ))}
+                  ))}
               </div>
             </div>
           </>

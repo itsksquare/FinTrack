@@ -21,6 +21,10 @@ Chart.register(LineElement);
 const CategoriesChart = ({ transactions }) => {
   const [categoryData, setCategoryData] = useState();
 
+  transactions = transactions.filter(
+    (transaction) => transaction.type === "DEBIT"
+  );
+
   useEffect(() => {
     const getCategoryData = async () => {
       let map = new Map();
@@ -30,7 +34,9 @@ const CategoriesChart = ({ transactions }) => {
           map.set(s, {
             category: transactions[i].category,
             color: TransactionCategories.find(
-              (category) => category.name === transactions[i].category
+              (category) =>
+                category.name.toLocaleLowerCase() ===
+                transactions[i].category.toLocaleLowerCase()
             ).color,
             count: 1,
           });
@@ -51,11 +57,11 @@ const CategoriesChart = ({ transactions }) => {
       });
 
       setCategoryData({
-        labels: chartCategories,
+        labels: chartCategories.slice(0, 5),
         datasets: [
           {
             data: chartCount,
-            backgroundColor: chartColors,
+            backgroundColor: chartColors.slice(0, 5),
           },
         ],
       });
@@ -68,7 +74,7 @@ const CategoriesChart = ({ transactions }) => {
       {categoryData && (
         <div className="w-full flex flex-row p-2 justify-between items-center">
           <div className="w-2/5">
-            {TransactionCategories.map((category, index) => (
+            {TransactionCategories.slice(0, 5).map((category, index) => (
               <div
                 key={index}
                 className="flex flex-row justify-start items-center text-sm"
