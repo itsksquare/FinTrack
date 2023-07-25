@@ -88,7 +88,7 @@ const SpendsPage = () => {
         {session?.user.transactions.length > 0 && (
           <>
             <TransactionsChart
-              transactions={session?.user.transaction}
+              transactions={session?.user.transactions}
               className="backdrop-blur-lg rounded-lg"
             />
             <CategoriesChart transactions={session?.user.transactions} />

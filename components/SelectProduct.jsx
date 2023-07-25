@@ -55,7 +55,7 @@ const SelectProduct = ({ session }) => {
         </h1>
         <div className="w-full flex flex-col items-start p-2 mt-5">
           <Label className="my-2">Choose your product</Label>
-          {DreamProductCategories.map((category) => (
+          {DreamProductCategories.slice(0, 5).map((category) => (
             <div key={category.key} className="w-full">
               <h2
                 className="p-2 mb-2 border-b border-gray-500 cursor-pointer"
