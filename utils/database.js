@@ -12,7 +12,7 @@ export const connectToDatabase = async () => {
 
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      dbName: "FinTrack_Brainvoltzzz",
+      dbName: "FinTrack",
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
